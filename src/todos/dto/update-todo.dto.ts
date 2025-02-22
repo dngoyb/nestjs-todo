@@ -1,4 +1,5 @@
-import { IsString, IsOptional } from 'class-validator';
+import { IsString, IsOptional, IsIn } from 'class-validator';
+import { TodoStatus } from '../enums';
 
 export class UpdateTodoDto {
   @IsString()
@@ -9,7 +10,7 @@ export class UpdateTodoDto {
   @IsOptional()
   description?: string;
 
-  @IsString()
+  @IsIn(Object.values(TodoStatus))
   @IsOptional()
-  status?: string;
+  status?: TodoStatus;
 }
